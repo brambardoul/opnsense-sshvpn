@@ -213,9 +213,10 @@ whose command line contains that path. Don't put that path in the same remote co
 - Outbound NAT is IPv4 only.
 - Clients don't receive routes or DNS from the server. Configure them on the client.
 
-## Credits and thanks
+## Credits and Thanks
 
 Thanks to danfruehauf for creating the NetworkManager-ssh wich was the inspiration for this Project.  https://github.com/danfruehauf/NetworkManager-ssh
+Thanks to the OPNSense team for a nice firewall. https://www.opnsense.org
 
 ## License
 
