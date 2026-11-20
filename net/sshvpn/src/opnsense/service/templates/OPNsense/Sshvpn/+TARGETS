@@ -1,0 +1,3 @@
+sshvpn.conf:/usr/local/etc/ssh/sshd_config.d/50-sshvpn.conf
+authorized_keys:/usr/local/etc/sshvpn/keys/root
+tunnels.conf:/usr/local/etc/sshvpn/tunnels.conf

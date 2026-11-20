@@ -1,0 +1,84 @@
+<form>
+    <field>
+        <id>client.enabled</id>
+        <label>Enabled</label>
+        <type>checkbox</type>
+    </field>
+    <field>
+        <id>client.description</id>
+        <label>Description</label>
+        <type>text</type>
+    </field>
+    <field>
+        <id>client.pubkey</id>
+        <label>Public key</label>
+        <type>textbox</type>
+        <help>The client's OpenSSH public key (contents of e.g. ~/.ssh/id_ed25519.pub). In NetworkManager-ssh use authentication type "SSH key" or "SSH agent" with the matching private key. Password authentication is not supported. Remote username must be "root". Do not also add this key to root's own authorized keys (System: Access: Users), otherwise it would get a full shell instead of the tunnel.</help>
+    </field>
+    <field>
+        <id>client.mode</id>
+        <label>Device type</label>
+        <type>dropdown</type>
+        <help>Must match "Use a TAP device" in NetworkManager-ssh (unchecked = tun).</help>
+    </field>
+    <field>
+        <id>client.unit</id>
+        <label>Device number</label>
+        <type>text</type>
+        <help>The server-side tun/tap unit forced for this key (tunN / tapN). Range 100-255. Set the same value as "Remote device number" in NetworkManager-ssh (default 100). Each client needs its own unit.</help>
+    </field>
+    <field>
+        <id>client.server_ip</id>
+        <label>Server tunnel IP</label>
+        <type>text</type>
+        <help>This firewall's address inside the tunnel. NetworkManager-ssh field: "Remote IP Address".</help>
+    </field>
+    <field>
+        <id>client.client_ip</id>
+        <label>Client tunnel IP</label>
+        <type>text</type>
+        <help>The client's address inside the tunnel. NetworkManager-ssh field: "Local IP Address".</help>
+    </field>
+    <field>
+        <id>client.netmask</id>
+        <label>Netmask</label>
+        <type>dropdown</type>
+        <help>NetworkManager-ssh field: "Netmask".</help>
+    </field>
+    <field>
+        <id>client.server_ip6</id>
+        <label>Server tunnel IPv6</label>
+        <type>text</type>
+        <help>Optional. NetworkManager-ssh field: "Remote IPv6 Address" (enable "Use IPv6").</help>
+    </field>
+    <field>
+        <id>client.client_ip6</id>
+        <label>Client tunnel IPv6</label>
+        <type>text</type>
+        <help>Optional. NetworkManager-ssh field: "Local IPv6 Address".</help>
+    </field>
+    <field>
+        <id>client.prefix6</id>
+        <label>IPv6 prefix length</label>
+        <type>text</type>
+        <help>NetworkManager-ssh field: "IPv6 Netmask". For tun devices with prefix 128 the client address is set as point-to-point destination.</help>
+    </field>
+    <field>
+        <id>client.nat</id>
+        <label>Outbound NAT</label>
+        <type>checkbox</type>
+        <help>Translate traffic from the client tunnel IP leaving the selected interface to that interface's address (like the automatic outbound NAT rules for LAN). Needed for internet access through the tunnel. IPv4 only.</help>
+    </field>
+    <field>
+        <id>client.nat_interface</id>
+        <label>NAT interface</label>
+        <type>dropdown</type>
+        <help>Outgoing interface for the NAT rule, usually WAN.</help>
+    </field>
+    <field>
+        <id>client.mtu</id>
+        <label>MTU</label>
+        <type>text</type>
+        <help>NetworkManager-ssh field: "Use custom tunnel Maximum Transmission Unit (MTU)" (default 1500).</help>
+    </field>
+</form>

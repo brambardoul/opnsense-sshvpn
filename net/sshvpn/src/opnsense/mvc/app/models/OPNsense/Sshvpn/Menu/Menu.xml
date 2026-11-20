@@ -1,0 +1,7 @@
+<menu>
+    <VPN>
+        <SSHVPN VisibleName="SSH VPN" cssClass="fa fa-lock fa-fw" order="60">
+            <Settings url="/ui/sshvpn/"/>
+        </SSHVPN>
+    </VPN>
+</menu>

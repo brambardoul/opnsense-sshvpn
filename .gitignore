@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+# opnsense/plugins build output
+work/
+*.pkg
+# editors / OS
+*.swp
+*~
+.DS_Store
+.idea/
+.vscode/

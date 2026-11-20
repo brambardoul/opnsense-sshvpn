@@ -1,0 +1,12 @@
+SSH VPN for OPNsense.
+
+Adds tun/tap tunnels (PermitTunnel) to the built-in OPNsense SSH service
+so Linux clients using NetworkManager-ssh
+(https://github.com/danfruehauf/NetworkManager-ssh) can connect.
+A drop-in in /usr/local/etc/ssh/sshd_config.d enables this for root only;
+no second sshd instance is started.
+
+Each client is bound to its public key, a fixed tun/tap unit and a
+pair of tunnel addresses. The Linux "ip" commands sent by
+NetworkManager-ssh are ignored; the firewall configures its side of
+the tunnel itself using FreeBSD ifconfig.

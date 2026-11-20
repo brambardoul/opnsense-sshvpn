@@ -1,0 +1,14 @@
+<form>
+    <field>
+        <id>sshvpn.general.enabled</id>
+        <label>Enable</label>
+        <type>checkbox</type>
+        <help>Allow tun/tap tunnels over the system SSH service (System: Settings: Administration). Port and listen interfaces are taken from there.</help>
+    </field>
+    <field>
+        <id>sshvpn.general.rootlogin</id>
+        <label>Permit root VPN logins</label>
+        <type>checkbox</type>
+        <help>NetworkManager-ssh logs in as root. If "Permit root user login" is disabled in the system SSH settings, this re-allows root logins for keys with a forced command only (PermitRootLogin forced-commands-only), i.e. the VPN client keys. Has no effect when root login is already permitted.</help>
+    </field>
+</form>

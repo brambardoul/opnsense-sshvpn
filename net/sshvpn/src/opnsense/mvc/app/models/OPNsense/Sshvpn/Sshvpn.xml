@@ -1,0 +1,110 @@
+<model>
+    <mount>//OPNsense/sshvpn</mount>
+    <version>1.2.0</version>
+    <description>SSH VPN (NetworkManager-ssh compatible)</description>
+    <items>
+        <general>
+            <enabled type="BooleanField">
+                <Default>0</Default>
+                <Required>Y</Required>
+            </enabled>
+            <rootlogin type="BooleanField">
+                <Default>1</Default>
+                <Required>Y</Required>
+            </rootlogin>
+        </general>
+        <clients>
+            <client type="ArrayField">
+                <enabled type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                </enabled>
+                <description type="TextField">
+                    <Required>Y</Required>
+                    <Mask>/^[^|"\r\n]{1,64}$/</Mask>
+                    <ValidationMessage>Description must be 1-64 characters and may not contain | or quotes.</ValidationMessage>
+                </description>
+                <pubkey type="TextField">
+                    <Required>Y</Required>
+                    <Mask>/^(ssh-ed25519|ssh-rsa|ecdsa-sha2-nistp(256|384|521)|sk-ssh-ed25519@openssh\.com|sk-ecdsa-sha2-nistp256@openssh\.com) [A-Za-z0-9+\/]+={0,3}( [^"\r\n]*)?$/</Mask>
+                    <ValidationMessage>Paste a single OpenSSH public key line (e.g. "ssh-ed25519 AAAA... user@host").</ValidationMessage>
+                </pubkey>
+                <mode type="OptionField">
+                    <Default>tun</Default>
+                    <Required>Y</Required>
+                    <OptionValues>
+                        <tun>tun (point-to-point)</tun>
+                        <tap>tap (ethernet)</tap>
+                    </OptionValues>
+                </mode>
+                <unit type="IntegerField">
+                    <Default>100</Default>
+                    <Required>Y</Required>
+                    <MinimumValue>100</MinimumValue>
+                    <MaximumValue>255</MaximumValue>
+                    <ValidationMessage>Unit must be between 100 and 255 (lower units may clash with core tun/tap devices).</ValidationMessage>
+                    <Constraints>
+                        <check001>
+                            <ValidationMessage>This tun/tap unit is already used by another client.</ValidationMessage>
+                            <type>UniqueConstraint</type>
+                        </check001>
+                    </Constraints>
+                </unit>
+                <server_ip type="NetworkField">
+                    <Required>Y</Required>
+                    <NetMaskAllowed>N</NetMaskAllowed>
+                    <AddressFamily>ipv4</AddressFamily>
+                </server_ip>
+                <client_ip type="NetworkField">
+                    <Required>Y</Required>
+                    <NetMaskAllowed>N</NetMaskAllowed>
+                    <AddressFamily>ipv4</AddressFamily>
+                </client_ip>
+                <netmask type="OptionField">
+                    <Default>255.255.255.252</Default>
+                    <Required>Y</Required>
+                    <OptionValues>
+                        <m32 value="255.255.255.255">/32 (255.255.255.255)</m32>
+                        <m31 value="255.255.255.254">/31 (255.255.255.254)</m31>
+                        <m30 value="255.255.255.252">/30 (255.255.255.252)</m30>
+                        <m29 value="255.255.255.248">/29 (255.255.255.248)</m29>
+                        <m28 value="255.255.255.240">/28 (255.255.255.240)</m28>
+                        <m27 value="255.255.255.224">/27 (255.255.255.224)</m27>
+                        <m26 value="255.255.255.192">/26 (255.255.255.192)</m26>
+                        <m25 value="255.255.255.128">/25 (255.255.255.128)</m25>
+                        <m24 value="255.255.255.0">/24 (255.255.255.0)</m24>
+                    </OptionValues>
+                </netmask>
+                <server_ip6 type="NetworkField">
+                    <NetMaskAllowed>N</NetMaskAllowed>
+                    <AddressFamily>ipv6</AddressFamily>
+                </server_ip6>
+                <client_ip6 type="NetworkField">
+                    <NetMaskAllowed>N</NetMaskAllowed>
+                    <AddressFamily>ipv6</AddressFamily>
+                </client_ip6>
+                <prefix6 type="IntegerField">
+                    <Default>128</Default>
+                    <Required>Y</Required>
+                    <MinimumValue>1</MinimumValue>
+                    <MaximumValue>128</MaximumValue>
+                </prefix6>
+                <nat type="BooleanField">
+                    <Default>0</Default>
+                    <Required>Y</Required>
+                </nat>
+                <nat_interface type="InterfaceField">
+                    <Default>wan</Default>
+                    <Required>Y</Required>
+                    <Multiple>N</Multiple>
+                </nat_interface>
+                <mtu type="IntegerField">
+                    <Default>1500</Default>
+                    <Required>Y</Required>
+                    <MinimumValue>576</MinimumValue>
+                    <MaximumValue>9000</MaximumValue>
+                </mtu>
+            </client>
+        </clients>
+    </items>
+</model>

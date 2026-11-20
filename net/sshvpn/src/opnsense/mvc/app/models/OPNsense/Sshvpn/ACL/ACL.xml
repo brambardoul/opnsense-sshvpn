@@ -1,0 +1,9 @@
+<acl>
+    <page-vpn-sshvpn>
+        <name>VPN: SSH VPN</name>
+        <patterns>
+            <pattern>ui/sshvpn/*</pattern>
+            <pattern>api/sshvpn/*</pattern>
+        </patterns>
+    </page-vpn-sshvpn>
+</acl>
