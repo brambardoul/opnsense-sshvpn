@@ -215,8 +215,8 @@ whose command line contains that path. Don't put that path in the same remote co
 
 ## Credits and Thanks
 
-Thanks to danfruehauf for creating the NetworkManager-ssh wich was the inspiration for this Project.  https://github.com/danfruehauf/NetworkManager-ssh
-Thanks to the OPNSense team for a nice firewall. https://www.opnsense.org
+- Thanks to danfruehauf for creating the NetworkManager-ssh wich was the inspiration for this Project.  https://github.com/danfruehauf/NetworkManager-ssh
+- Thanks to the OPNSense team for a nice firewall. https://www.opnsense.org
 
 ## License
 
